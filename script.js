@@ -185,18 +185,19 @@ const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 // ⚙️ Cấu hình riêng theo thiết bị
 if (isMobile) {
-  // Rơi nhanh hơn, nhảy vừa phải — cảm giác gần giống PC
-  bird.gravity = 3 * (360 / canvas.width);
-  bird.lift = -Math.max(4.2, canvas.height * 0.018);
-  pipeGap = canvas.height * 0.23; // ống gần hơn một chút cho cân đối
+  // 🚀 Tốc độ nhanh hơn PC nhưng vẫn mượt
+  bird.gravity = 0.55 * (360 / canvas.width);   // rơi nhanh hơn
+  bird.lift = -Math.max(4.5, canvas.height * 0.018); // nhảy mạnh hơn
+  pipeGap = canvas.height * 0.24;               // khe ống hợp lý
   pipeSpacing = canvas.width * 0.55;
 } else {
-  // Trên máy tính — cấu hình chuẩn
+  // 💻 PC — cấu hình chuẩn
   bird.gravity = 0.4 * (360 / canvas.width);
   bird.lift = -Math.max(3.2, canvas.height * 0.015);
   pipeGap = canvas.height * 0.22;
   pipeSpacing = canvas.width * 0.55;
 }
+
 
   // spawnRate scaled to width (bigger screen => a bit more spacing)
   spawnRate = 200;
@@ -208,6 +209,7 @@ if (isMobile) {
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
 
