@@ -176,7 +176,7 @@ function resizeCanvas() {
   bird.height = Math.round(bird.width * 0.85);      // keep bird aspect approx
   bird.x = Math.round(canvas.width * 0.12);         // bird horizontal pos
   // gravity / lift scale
-  bird.gravity = 0.4 * (360 / canvas.width);  // trọng lực mạnh hơn 1 chút
+  bird.gravity = 0.09 * (360 / canvas.width);  // trọng lực mạnh hơn 1 chút
 bird.lift = -Math.max(3, canvas.height * 0.009); // nhảy nhẹ hơn
 
   pipeWidth = Math.round(canvas.width * 0.28);     // pipe width ~14% of canvas width
@@ -191,3 +191,4 @@ bird.lift = -Math.max(3, canvas.height * 0.009); // nhảy nhẹ hơn
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
