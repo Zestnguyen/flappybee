@@ -175,12 +175,13 @@ function resizeCanvas() {
   bird.width = Math.round(canvas.width * 0.1);      // bird = 10% canvas width
   bird.height = Math.round(bird.width * 0.85);      // keep bird aspect approx
   bird.x = Math.round(canvas.width * 0.12);         // bird horizontal pos
-  // gravity / lift scale
-  bird.gravity = 0.09 * (360 / canvas.width);  // trọng lực mạnh hơn 1 chút
-bird.lift = -Math.max(2.8, canvas.height * 0.0012); // nhảy nhẹ hơn
-if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-  bird.lift *= 0.8; // giảm 20% độ nhảy
-}
+ // Cấu hình chim (hoặc ong)
+bird.x = canvas.width / 5;
+bird.y = canvas.height / 2;
+bird.radius = canvas.width * 0.04;
+bird.gravity = 0.4 * (360 / canvas.width);
+bird.lift = -Math.max(3.2, canvas.height * 0.015); // độ nhảy chuẩn PC & mobile
+bird.velocity = 0;
   pipeWidth = Math.round(canvas.width * 0.28);     // pipe width ~14% of canvas width
   gap = Math.round(canvas.height * 0.30);          // gap ~28% of canvas height (bigger)
   // spawnRate scaled to width (bigger screen => a bit more spacing)
@@ -193,6 +194,7 @@ if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
 
