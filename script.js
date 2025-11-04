@@ -168,6 +168,9 @@ function resizeCanvas() {
     h = window.innerHeight * 0.8;
     w = h * ratio;
   }
+  if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+  bird.lift *= 0.1; // giảm 20% độ nhảy
+}
   canvas.width = Math.round(w);
   canvas.height = Math.round(h);
 
@@ -191,4 +194,5 @@ bird.lift = -Math.max(3, canvas.height * 0.009); // nhảy nhẹ hơn
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
