@@ -186,7 +186,7 @@ const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 // ⚙️ Cấu hình riêng theo thiết bị
 if (isMobile) {
   // Rơi nhanh hơn, nhảy vừa phải — cảm giác gần giống PC
-  bird.gravity = 1 * (360 / canvas.width);
+  bird.gravity = 3 * (360 / canvas.width);
   bird.lift = -Math.max(4.2, canvas.height * 0.018);
   pipeGap = canvas.height * 0.23; // ống gần hơn một chút cho cân đối
   pipeSpacing = canvas.width * 0.55;
@@ -208,6 +208,7 @@ if (isMobile) {
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
 
