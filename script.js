@@ -185,11 +185,11 @@ const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 // ⚙️ Cấu hình riêng theo thiết bị
 if (isMobile) {
-  // Trên điện thoại — nhảy nhẹ hơn, rơi chậm hơn một chút
-  bird.gravity = 0.45* (360 / canvas.width);
-  bird.lift = -Math.max(2.8, canvas.height * 0.013);
-  pipeGap = canvas.height * 0.25; // khoảng cách giữa 2 ống
-  pipeSpacing = canvas.width * 0.6; // khoảng cách giữa các cặp ống
+  // Rơi nhanh hơn, nhảy vừa phải — cảm giác gần giống PC
+  bird.gravity = 0.46 * (360 / canvas.width);
+  bird.lift = -Math.max(3, canvas.height * 0.014);
+  pipeGap = canvas.height * 0.23; // ống gần hơn một chút cho cân đối
+  pipeSpacing = canvas.width * 0.55;
 } else {
   // Trên máy tính — cấu hình chuẩn
   bird.gravity = 0.4 * (360 / canvas.width);
@@ -208,6 +208,7 @@ if (isMobile) {
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
 
