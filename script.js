@@ -175,15 +175,29 @@ function resizeCanvas() {
   bird.width = Math.round(canvas.width * 0.1);      // bird = 10% canvas width
   bird.height = Math.round(bird.width * 0.85);      // keep bird aspect approx
   bird.x = Math.round(canvas.width * 0.12);         // bird horizontal pos
- // Cấu hình chim (hoặc ong)
+// Cấu hình con ong (hoặc chim)
 bird.x = canvas.width / 5;
 bird.y = canvas.height / 2;
 bird.radius = canvas.width * 0.04;
-bird.gravity = 0.4 * (360 / canvas.width);
-bird.lift = -Math.max(3.2, canvas.height * 0.015); // độ nhảy chuẩn PC & mobile
-bird.velocity = 0;
-  pipeWidth = Math.round(canvas.width * 0.28);     // pipe width ~14% of canvas width
-  gap = Math.round(canvas.height * 0.30);          // gap ~28% of canvas height (bigger)
+
+// Kiểm tra thiết bị
+const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
+// ⚙️ Cấu hình riêng theo thiết bị
+if (isMobile) {
+  // Trên điện thoại — nhảy nhẹ hơn, rơi chậm hơn một chút
+  bird.gravity = 0.4 * (360 / canvas.width);
+  bird.lift = -Math.max(2.8, canvas.height * 0.013);
+  pipeGap = canvas.height * 0.25; // khoảng cách giữa 2 ống
+  pipeSpacing = canvas.width * 0.6; // khoảng cách giữa các cặp ống
+} else {
+  // Trên máy tính — cấu hình chuẩn
+  bird.gravity = 0.4 * (360 / canvas.width);
+  bird.lift = -Math.max(3.2, canvas.height * 0.015);
+  pipeGap = canvas.height * 0.22;
+  pipeSpacing = canvas.width * 0.55;
+}
+
   // spawnRate scaled to width (bigger screen => a bit more spacing)
   spawnRate = 200;
 
@@ -194,6 +208,7 @@ bird.velocity = 0;
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
 
