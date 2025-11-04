@@ -168,9 +168,6 @@ function resizeCanvas() {
     h = window.innerHeight * 0.8;
     w = h * ratio;
   }
-  if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-  bird.lift *= 0.1; // giảm 20% độ nhảy
-}
   canvas.width = Math.round(w);
   canvas.height = Math.round(h);
 
@@ -180,8 +177,10 @@ function resizeCanvas() {
   bird.x = Math.round(canvas.width * 0.12);         // bird horizontal pos
   // gravity / lift scale
   bird.gravity = 0.09 * (360 / canvas.width);  // trọng lực mạnh hơn 1 chút
-bird.lift = -Math.max(3, canvas.height * 0.009); // nhảy nhẹ hơn
-
+bird.lift = -Math.max(2.8, canvas.height * 0.0012); // nhảy nhẹ hơn
+if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+  bird.lift *= 0.8; // giảm 20% độ nhảy
+}
   pipeWidth = Math.round(canvas.width * 0.28);     // pipe width ~14% of canvas width
   gap = Math.round(canvas.height * 0.30);          // gap ~28% of canvas height (bigger)
   // spawnRate scaled to width (bigger screen => a bit more spacing)
@@ -194,5 +193,6 @@ bird.lift = -Math.max(3, canvas.height * 0.009); // nhảy nhẹ hơn
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
+
 
 
